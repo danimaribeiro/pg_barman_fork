@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-27 16:37+0000\n"
+"POT-Creation-Date: 2013-09-27 17:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,22 +18,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: pg_barman/models.py:5
+#: actions.py:23
+msgid "Export selected objects as csv file"
+msgstr "Exportar objetos como CSV"
+
+#: models.py:5
 msgid "Description"
 msgstr "Descrição"
 
-#: pg_barman/models.py:6
+#: models.py:6
 msgid "Last Backup"
 msgstr "Último backup"
 
-#: pg_barman/models.py:7
+#: models.py:7
 msgid "Backup Interval"
 msgstr "Intervalo de backup"
 
-#: pg_barman/models.py:14
+#: models.py:14
 msgid "Backup Database"
 msgstr "Banco de dados"
 
-#: pg_barman/models.py:15
+#: models.py:15
 msgid "Databases for backup"
 msgstr "Bancos de backup"
