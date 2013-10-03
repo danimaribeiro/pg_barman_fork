@@ -1,5 +1,18 @@
+#coding=utf-8
 from django.db import models
 from django.utils.translation import ugettext as _
+
+class string_with_title(str):
+    def __new__(cls, value, title):
+        instance = str.__new__(cls, value)
+        instance._title = title
+        return instance
+
+    def title(self):
+        return self._title
+
+    __copy__ = lambda self: self
+    __deepcopy__ = lambda self, memodict: self
 
 class BarmanConfiguration(models.Model):
     description = models.CharField(_('Description'), max_length=50)
@@ -18,21 +31,23 @@ class BarmanConfiguration(models.Model):
         return self.barman_home
 
     class Meta:
+        app_label = string_with_title("pg_barman", "Barman Backups")
         ordering = ["barman_home", "barman_user", "minimum_redundancy"]
         verbose_name = _("Configuration")
-        verbose_name_plural = _("Configurations")
+        verbose_name_plural = _("Configurations")        
 
       
 class BackupDatabase(models.Model):
     description = models.CharField(_('Description'), max_length=200)    
     last_backup = models.DateTimeField(_('Last Backup'), null=True, blank=True)
     backup_interval = models.TimeField(_('Backup Interval'))
-    configuration = models.ForeignKey(BarmanConfiguration, related_name=_('Configuration'))
+    configuration = models.ForeignKey(BarmanConfiguration, related_name='configuration')
     
     def __unicode__(self):
         return self.description
       
     class Meta:
+        app_label = string_with_title("pg_barman", "Barman Backups")
         ordering = ["description", "last_backup", "backup_interval"]
         verbose_name = _("Backup Database")
         verbose_name_plural = _("Databases for backup")
@@ -44,12 +59,13 @@ class Backup(models.Model):
     database_size = models.IntegerField(_('Database Size'))
     file_size = models.IntegerField(_('File Size'))
     file_location = models.CharField(_('File Location'), max_length=300)
-    database = models.ForeignKey(BackupDatabase, related_name = _('Database'))
+    database = models.ForeignKey(BackupDatabase, related_name = 'database')
     
     def __unicode__(self):
         return self.description
       
     class Meta:
+        app_label = string_with_title("pg_barman", "Barman Backups")
         ordering = [ "description", "date_backup" ]
 
 class Storage(models.Model):
@@ -69,6 +85,6 @@ class StorageConfiguration(models.Model):
     storage_key = models.CharField(_('Key'), max_length=100)
     storage_value = models.CharField(_('Value'), max_length=500)
     required = models.BooleanField(_('Required'))
-    storage = models.ForeignKey(Storage, related_name = _('Storage'))
+    storage = models.ForeignKey(Storage, related_name = 'storage')
 
     

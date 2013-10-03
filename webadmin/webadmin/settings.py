@@ -8,6 +8,12 @@ ADMINS = (
     ('Danimar Ribeiro', 'danimaribeiro@gmail.com'),
 )
 
+SUIT_CONFIG = {
+    'MENU_EXCLUDE': ('auth.group', 'auth'),
+    'ADMIN_NAME': "Django's Bar",
+    'HEADER_DATE_FORMAT': 'l, j. F Y',
+    'HEADER_TIME_FORMAT': 'H:i',}
+
 MANAGERS = ADMINS
 
 DATABASES = {

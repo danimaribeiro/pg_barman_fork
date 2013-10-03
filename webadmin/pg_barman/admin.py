@@ -1,3 +1,4 @@
+#coding=utf-8
 from models import BackupDatabase, BarmanConfiguration, Storage, StorageConfiguration, Backup
 from django.contrib import admin
 from actions import export_as_csv, schedule_full_backup   

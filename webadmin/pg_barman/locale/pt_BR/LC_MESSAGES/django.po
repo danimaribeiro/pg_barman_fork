@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-27 17:41+0000\n"
+"POT-Creation-Date: 2013-10-03 19:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,22 +22,104 @@ msgstr ""
 msgid "Export selected objects as csv file"
 msgstr "Exportar objetos como CSV"
 
-#: models.py:5
+#: actions.py:32
+msgid "Schedule a full backup"
+msgstr "Executar um backup completo"
+
+#: models.py:5 models.py:27 models.py:41 models.py:60
 msgid "Description"
 msgstr "Descrição"
 
 #: models.py:6
+msgid "Barman Location"
+msgstr "Localização"
+
+#: models.py:7
+msgid "Barman User"
+msgstr "Barman Usuário"
+
+#: models.py:8
+msgid "Log file"
+msgstr "Arquivo de log"
+
+#: models.py:14
+msgid "Compression"
+msgstr "Compressão"
+
+#: models.py:15
+msgid "Minimum Redundancy"
+msgstr "Redundância Minima"
+
+#: models.py:22 models.py:30
+msgid "Configuration"
+msgstr "Configuração"
+
+#: models.py:23
+msgid "Configurations"
+msgstr "Configurações"
+
+#: models.py:28
 msgid "Last Backup"
 msgstr "Último backup"
 
-#: models.py:7
+#: models.py:29
 msgid "Backup Interval"
 msgstr "Intervalo de backup"
 
-#: models.py:14
+#: models.py:37
 msgid "Backup Database"
 msgstr "Banco de dados"
 
-#: models.py:15
+#: models.py:38
 msgid "Databases for backup"
 msgstr "Bancos de backup"
+
+#: models.py:42
+msgid "Name"
+msgstr "Nome"
+
+#: models.py:43
+#, fuzzy
+msgid "Backup Date"
+msgstr "Data backup"
+
+#: models.py:44
+msgid "Database Size"
+msgstr "Tamanho banco"
+
+#: models.py:45
+msgid "File Size"
+msgstr "Tamanho arquivo"
+
+#: models.py:46
+msgid "File Location"
+msgstr "Localização arquivo"
+
+#: models.py:47
+#, fuzzy
+msgid "Database"
+msgstr "Banco de dados"
+
+#: models.py:59
+msgid "Unique Key"
+msgstr "Chave"
+
+#: models.py:66
+msgid "Save Method"
+msgstr "Método armazenamento"
+
+#: models.py:69
+msgid "Key"
+msgstr "Chave"
+
+#: models.py:70
+msgid "Value"
+msgstr "Valor"
+
+#: models.py:71
+msgid "Required"
+msgstr "Obrigatório"
+
+#: models.py:72
+msgid "Storage"
+msgstr "Armazenamento"
