@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.translation import ugettext as _
 
 class BarmanConfiguration(models.Model):
+    description = models.CharField(_('Description'), max_length=50)
     barman_home = models.CharField(_('Barman Location'), max_length=300)
     barman_user = models.CharField(_('Barman User'), max_length=50)
     log_file = models.CharField(_('Log file'), max_length=300)
@@ -38,16 +39,18 @@ class BackupDatabase(models.Model):
         
 class Backup(models.Model):
     description = models.CharField(_('Description'), max_length=100)
+    name = models.CharField(_('Name'), max_length=100)
     date_backup = models.DateTimeField(_('Backup Date'))
     database_size = models.IntegerField(_('Database Size'))
     file_size = models.IntegerField(_('File Size'))
+    file_location = models.CharField(_('File Location'), max_length=300)
     database = models.ForeignKey(BackupDatabase, related_name = _('Database'))
     
     def __unicode__(self):
         return self.description
       
     class Meta:
-      ordering = [ "description", "date_backup" ]
+        ordering = [ "description", "date_backup" ]
 
 class Storage(models.Model):
     """
