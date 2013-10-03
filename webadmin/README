@@ -1,0 +1,9 @@
+Aftera install Django you must install the dependences below
+
+
+Dependences:
+  Amazon API for save backup to S3
+  http://boto.readthedocs.org/en/latest/index.html
+  
+  Bootstrap interface for django admin
+  http://django-suit.readthedocs.org/en/develop/

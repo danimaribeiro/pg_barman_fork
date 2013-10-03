@@ -58,7 +58,12 @@ class Storage(models.Model):
     """    
     unique_key = models.CharField(_('Unique Key'), max_length=50, unique=True)
     description = models.CharField(_('Description'), max_length=100)
-    implementation_class_name = models.CharField(_('Class Name'), max_length=100)
+    IMPL_CHOICES = (
+            (u'storage.AmazonS3', u'S3 Amazon'),
+            (u'storage.FtpStorage', u'Remote FTP'),
+            (u'storage.AzureBlob', u'Blobs Azure')
+            )
+    implementation_class_name = models.CharField(_('Save Method'), max_length=100, choices=IMPL_CHOICES)
     
 class StorageConfiguration(models.Model):
     storage_key = models.CharField(_('Key'), max_length=100)

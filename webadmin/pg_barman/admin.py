@@ -17,26 +17,28 @@ class BarmanConfigurationAdmin(admin.ModelAdmin):
     
 class StorageConfigurationAdmin(admin.TabularInline):
     model = StorageConfiguration
+    max_num = 1
+    fields = ['storage_key', 'storage_value']
 
 class StorageAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):
-        return False
-    def has_change_permission(self, request):
-        return False
-    def has_delete_permission(self, request):
+        return True
+    def has_change_permission(self, request, obj=None):
+        return True
+    def has_delete_permission(self, request, obj=None):
         return False
     inlines = [StorageConfigurationAdmin]
   
 
 class BackupAdmin(admin.ModelAdmin):
+    fields = ['description','name', 'date_backup']
     actions = [schedule_full_backup]
 
 #admin.site.disable_action('delete_selected')
+admin.site.register(Storage, StorageAdmin)
 admin.site.register(BarmanConfiguration, BarmanConfigurationAdmin)
 admin.site.register(BackupDatabase, BackupDatabaseAdmin)
-admin.site.register(Storage, StorageAdmin)
-admin.site.register(StorageConfiguration, StorageAdmin)
-admin.site.register(Backup, StorageAdmin)
+admin.site.register(Backup, BackupAdmin)
 
 
 

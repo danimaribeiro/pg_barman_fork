@@ -20,9 +20,17 @@ class AmazonS3(StorageAbstract):
         newKey = Key(bucket)
         newKey.name = backup.description
         newKey.key = backup.name
-        newKey.set_contents_to_filename(backup.file_location)
-    
-AmazonS3()
+        newKey.set_contents_to_filename(backup.file_location)    
+
+class FtpStorage(StorageAbstract):
+  
+    def Save(self, backup, config):
+        pass
+      
+class AzureBlob(StorageAbstract):
+    def Save(self, backup, config):
+      pass
+
       
       
       
