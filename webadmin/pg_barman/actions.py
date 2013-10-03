@@ -21,3 +21,19 @@ def export_as_csv(modeladmin, request, queryset):
         writer.writerow([getattr(obj, field) for field in field_names])
     return response
 export_as_csv.short_description = _("Export selected objects as csv file")
+
+
+def schedule_full_backup(modeladmin, request, queryset):
+    """
+    Schedule a full backup for the database
+    """
+    pass
+
+schedule_full_backup.short_description = _("Schedule a full backup")
+
+def schedule_incremental_backup(modeladmin, request, queryset):
+    """
+    Schedule a partial backup
+    """
+    pass
+  

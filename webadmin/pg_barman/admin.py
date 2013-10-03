@@ -1,4 +1,4 @@
-from models import backup_database, BarmanConfiguration
+from models import BackupDatabase, BarmanConfiguration
 from django.contrib import admin
 from actions import export_as_csv    
 
@@ -15,4 +15,4 @@ class BarmanConfigurationAdmin(admin.ModelAdmin):
     
 #admin.site.disable_action('delete_selected')
 admin.site.register(BarmanConfiguration, BarmanConfigurationAdmin)
-admin.site.register(backup_database, BackupDatabaseAdmin)
+admin.site.register(BackupDatabase, BackupDatabaseAdmin)

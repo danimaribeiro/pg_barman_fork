@@ -22,7 +22,7 @@ class BarmanConfiguration(models.Model):
         verbose_name_plural = _("Configurations")
 
       
-class backup_database(models.Model):
+class BackupDatabase(models.Model):
     description = models.CharField(_('Description'), max_length=200)    
     last_backup = models.DateTimeField(_('Last Backup'), null=True, blank=True)
     backup_interval = models.TimeField(_('Backup Interval'))
@@ -35,3 +35,32 @@ class backup_database(models.Model):
         ordering = ["description", "last_backup", "backup_interval"]
         verbose_name = _("Backup Database")
         verbose_name_plural = _("Databases for backup")
+        
+class Backup(models.Model):
+    description = models.CharField(_('Description'), max_length=100)
+    date_backup = models.DateTimeField(_('Backup Date'))
+    database_size = models.IntegerField(_('Database Size'))
+    file_size = models.IntegerField(_('File Size'))
+    database = models.ForeignKey(BackupDatabase, related_name = _('Database'))
+    
+    def __unicode__(self):
+        return self.description
+      
+    class Meta:
+      ordering = [ "description", "date_backup" ]
+
+class Storage(models.Model):
+    """
+    We can implement different types of Storage.    
+    """    
+    unique_key = models.CharField(_('Unique Key'), max_length=50, unique=True)
+    description = models.CharField(_('Description'), max_length=100)
+    implementation_class_name = models.CharField(_('Class Name'), max_length=100)
+    
+class StorageConfiguration(models.Model):
+    storage_key = models.CharField(_('Key'), max_length=100)
+    storage_value = models.CharField(_('Value'), max_length=500)
+    required = models.BooleanField(_('Required'))
+    storage = models.ForeignKey(Storage, related_name = _('Storage'))
+
+    
